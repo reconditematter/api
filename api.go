@@ -17,6 +17,7 @@ func main() {
 	R.Handle("/api/reconditematter", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage)))
 	//
 	svc.RandomNames(R)
+	svc.GeoHash(R)
 	//
 	srv := &http.Server{
 		Handler:      R,
@@ -31,6 +32,7 @@ func main() {
 func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
 /reconditematter/randomnames -- API to generate random names of both genders.
+/reconditematter/geohash     -- API to compute a geohash of geographic coordinates.
 `
 	svc.HS200t(w, []byte(doc))
 }
