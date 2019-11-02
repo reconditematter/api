@@ -11,7 +11,10 @@ import (
 )
 
 func main() {
-	const ADDR = ":5001"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5001"
+	}
 	//
 	R := mux.NewRouter()
 	R.Handle("/api/reconditematter", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage)))
@@ -23,7 +26,7 @@ func main() {
 	//
 	srv := &http.Server{
 		Handler:      R,
-		Addr:         ADDR,
+		Addr:         ":" + port,
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
