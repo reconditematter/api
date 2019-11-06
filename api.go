@@ -22,6 +22,7 @@ func main() {
 	svc.RandomNames(R)
 	svc.GeoMatrix(R)
 	svc.GeoHash(R)
+	svc.HashGeo(R)
 	svc.KFunction(R)
 	//
 	srv := &http.Server{
@@ -38,7 +39,8 @@ func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
 /reconditematter/randomnames -- API to generate random names of both genders.
 /reconditematter/geomatrix   -- API to compute a matrix of geographic distances.
-/reconditematter/geohash     -- API to compute a geohash of geographic coordinates.
+/reconditematter/geohash     -- API to convert geographic coordinates to a geohash.
+/reconditematter/hashgeo     -- API to convert a geohash to geographic coordinates.
 /reconditematter/kfunction   -- API to compute Ripley's K function on the unit sphere.
 `
 	svc.HS200t(w, []byte(doc))
