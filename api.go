@@ -17,13 +17,14 @@ func main() {
 	}
 	//
 	R := mux.NewRouter()
-	R.Handle("/api/reconditematter", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage)))
+	R.Handle("/api", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage)))
 	//
 	svc.RandomNames(R)
 	svc.GeoMatrix(R)
 	svc.GeoHash(R)
 	svc.HashGeo(R)
 	svc.KFunction(R)
+	svc.Pop2010(R)
 	//
 	srv := &http.Server{
 		Handler:      R,
@@ -37,11 +38,12 @@ func main() {
 
 func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
-/reconditematter/randomnames -- API to generate random names of both genders.
-/reconditematter/geomatrix   -- API to compute a matrix of geographic distances.
-/reconditematter/geohash     -- API to convert geographic coordinates to a geohash.
-/reconditematter/hashgeo     -- API to convert a geohash to geographic coordinates.
-/reconditematter/kfunction   -- API to compute Ripley's K function on the unit sphere.
+/api/randomnames -- API to generate random names of both genders.
+/api/geomatrix   -- API to compute a matrix of geographic distances.
+/api/geohash     -- API to convert geographic coordinates to a geohash.
+/api/hashgeo     -- API to convert a geohash to geographic coordinates.
+/api/kfunction   -- API to compute Ripley's K function on the unit sphere.
+/api/pop2010     -- API to summarize US Census 2010 population.
 `
 	svc.HS200t(w, []byte(doc))
 }
