@@ -24,7 +24,7 @@ func main() {
 	svc.GeoHash(R)
 	svc.HashGeo(R)
 	svc.KFunction(R)
-	svc.Pop2010(R)
+	//svc.Pop2010(R)
 	//
 	srv := &http.Server{
 		Handler:      R,
