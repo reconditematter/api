@@ -13,7 +13,7 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "5001"
+		port = "80"
 	}
 	//
 	R := mux.NewRouter()
