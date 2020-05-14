@@ -24,7 +24,7 @@ func main() {
 	svc.GeoHash(R)
 	svc.HashGeo(R)
 	svc.KFunction(R)
-	//svc.Pop2010(R)
+	svc.Pop2010(R)
 	//
 	srv := &http.Server{
 		Handler:      R,
@@ -43,7 +43,7 @@ func usage(w http.ResponseWriter, r *http.Request) {
 /api/geohash     -- API to convert geographic coordinates to a geohash.
 /api/hashgeo     -- API to convert a geohash to geographic coordinates.
 /api/kfunction   -- API to compute Ripley's K function on the unit sphere.
+/api/pop2010     -- API to summarize US Census 2010 population.
 `
-	// /api/pop2010     -- API to summarize US Census 2010 population.
 	svc.HS200t(w, []byte(doc))
 }
