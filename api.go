@@ -25,6 +25,7 @@ func main() {
 	svc.HashGeo(R)
 	svc.KFunction(R)
 	svc.Pop2010(R)
+	svc.GreatEll(R)
 	//
 	srv := &http.Server{
 		Handler:      R,
@@ -39,11 +40,12 @@ func main() {
 func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
 /api/randomnames -- API to generate random names of both genders.
-/api/geomatrix   -- API to compute a matrix of geographic distances.
+/api/geomatrix   -- API to compute a matrix of distances on the WGS1984 spheroid.
 /api/geohash     -- API to convert geographic coordinates to a geohash.
 /api/hashgeo     -- API to convert a geohash to geographic coordinates.
 /api/kfunction   -- API to compute Ripley's K function on the unit sphere.
 /api/pop2010     -- API to summarize US Census 2010 population.
+/api/greatell    -- API for great ellipse navigation on the WGS1984 spheroid.
 `
 	svc.HS200t(w, []byte(doc))
 }
