@@ -17,7 +17,7 @@ func main() {
 	}
 	//
 	R := mux.NewRouter()
-	R.Handle("/api", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage)))
+	R.Handle("/api", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage))).Methods("GET")
 	//
 	svc.RandomNames(R)
 	svc.GeoMatrix(R)
