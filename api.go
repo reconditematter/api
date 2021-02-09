@@ -30,6 +30,7 @@ func main() {
 	svc.KFunction(R)
 	svc.Pop2010(R)
 	svc.GreatEll(R)
+	svc.GeoCircle(R)
 	//
 	srv := &http.Server{
 		Handler:      R,
@@ -50,6 +51,7 @@ func usage(w http.ResponseWriter, r *http.Request) {
 /api/kfunction   -- API to compute Ripley's K function on the unit sphere.
 /api/pop2010     -- API to summarize US Census 2010 population.
 /api/greatell    -- API for great ellipse navigation on the WGS1984 spheroid.
+/api/geocircle   -- API to generate geodesic circles on the WGS1984 spheroid.
 `
 	svc.HS200t(w, []byte(doc))
 }
