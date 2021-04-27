@@ -24,6 +24,7 @@ func main() {
 	R.Handle("/api", handlers.LoggingHandler(os.Stderr, http.HandlerFunc(usage))).Methods("GET")
 	//
 	svc.RandomNames(R)
+	svc.RandomPoints(R)
 	svc.GeoMatrix(R)
 	svc.GeoHash(R)
 	svc.HashGeo(R)
@@ -44,14 +45,15 @@ func main() {
 
 func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
-/api/randomnames -- API to generate random names of both genders.
-/api/geomatrix   -- API to compute a matrix of distances on the WGS1984 spheroid.
-/api/geohash     -- API to convert geographic coordinates to a geohash.
-/api/hashgeo     -- API to convert a geohash to geographic coordinates.
-/api/kfunction   -- API to compute Ripley's K function on the unit sphere.
-/api/pop2010     -- API to summarize US Census 2010 population.
-/api/greatell    -- API for great ellipse navigation on the WGS1984 spheroid.
-/api/geocircle   -- API to generate geographic circles on the WGS1984 spheroid.
+/api/randomnames  -- API to generate random names of both genders.
+/api/randompoints -- API to generate random points in a 1x1 (deg) geographic cell.
+/api/geomatrix    -- API to compute a matrix of distances on the WGS1984 spheroid.
+/api/geohash      -- API to convert geographic coordinates to a geohash.
+/api/hashgeo      -- API to convert a geohash to geographic coordinates.
+/api/kfunction    -- API to compute Ripley's K function on the unit sphere.
+/api/pop2010      -- API to summarize US Census 2010 population.
+/api/greatell     -- API for great ellipse navigation on the WGS1984 spheroid.
+/api/geocircle    -- API to generate geographic circles on the WGS1984 spheroid.
 `
 	svc.HS200t(w, []byte(doc))
 }
