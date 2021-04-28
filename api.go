@@ -46,7 +46,7 @@ func main() {
 func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
 /api/randomnames  -- API to generate random names of both genders.
-/api/randompoints -- API to generate random points in a 1x1 (deg) geographic cell.
+/api/randompoints -- API to generate random points in a geographic cell.
 /api/geomatrix    -- API to compute a matrix of distances on the WGS1984 spheroid.
 /api/geohash      -- API to convert geographic coordinates to a geohash.
 /api/hashgeo      -- API to convert a geohash to geographic coordinates.
