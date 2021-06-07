@@ -25,6 +25,7 @@ func main() {
 	//
 	svc.RandomNames(R)
 	svc.RandomPoints(R)
+	svc.FibPoints(R)
 	svc.GeoMatrix(R)
 	svc.GeoHash(R)
 	svc.HashGeo(R)
@@ -47,6 +48,7 @@ func usage(w http.ResponseWriter, r *http.Request) {
 	doc := `
 /api/randomnames  -- API to generate random names of both genders.
 /api/randompoints -- API to generate random points in a geographic cell.
+/api/fibpoints    -- API to generate Fibonacci spiral points in a geographic cell.
 /api/geomatrix    -- API to compute a matrix of distances on the WGS1984 spheroid.
 /api/geohash      -- API to convert geographic coordinates to a geohash.
 /api/hashgeo      -- API to convert a geohash to geographic coordinates.
